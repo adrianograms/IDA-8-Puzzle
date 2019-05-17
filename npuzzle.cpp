@@ -6,6 +6,7 @@
 #include <stack> 
 #include <vector>
 #include <map>
+#include <xmmintrin.h>
 
 using namespace std; 
 
@@ -18,11 +19,11 @@ map<string,bool> matrizes_existentes;
 
 struct Node {
     Node *pai;
-    //stack<Node*> filhos;
     int valorfx;
     int gx;
     int hx;
-    char matriz[3][3];
+    int n,m;
+    char **matriz;
     Node(){}
     /*
     Função que calcula o hx para a matriz.
@@ -41,6 +42,13 @@ struct Node {
         }
         return hx;
     }
+	void constroi_matriz(){
+		matriz = new char*[n];
+		for (int i = 0; i < n; ++i){
+			matriz[i] = new char[m];
+		}
+		
+	}
 
     /*
     Construtor para o primeiro Node
