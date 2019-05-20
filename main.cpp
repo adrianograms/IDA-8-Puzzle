@@ -151,14 +151,27 @@ void run() {
         no = limitesValidos_global.back();
         limitesValidos_global.pop_back();
     }
-    for(int i = 0; i< 3; i++) {
-        for(int j = 0; j< 3; j++) {
-            cout << (int)no->matriz[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << no->gx << endl;
-    cout << matrizes_existentes.size() << endl;
+    
+    stack<Node*> print;
+    
+    cout <<"gx : " << no->gx << endl;
+    cout <<"qtd de matrizes : " << matrizes_existentes.size() << "\n\n";
+    while(no != NULL){
+		print.push(no);
+		no = no->pai;
+	}
+    while(!print.empty()){
+		no = print.top();
+		print.pop();
+		for(int i = 0; i< 3; i++) {
+			for(int j = 0; j< 3; j++) {
+				cout << "["<< (int)no->matriz[i][j] << "]";
+			}
+			cout << endl;
+		}
+		cout << endl << "--------------" << endl;
+		
+	}
 	matrizes_existentes.clear();
 }
   
